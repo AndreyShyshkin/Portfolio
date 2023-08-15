@@ -5,19 +5,124 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Poppins:wght@900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <header>
-        <div class="draggable">
-          <h2>HI, I`m </h2>
-          <div class="flex"><h1 id="name">Shyshkin Andrey</h1><span class="blink">|</span></div>
+    <header id="header">
+      <!--<canvas id="myCanvas"></canvas>-->
+      <div class="container">
+        <nav class="flex">
+          <div class="logo zUp">SADev</div>
+          <ul class="flex zUp">
+            <li><a href="#name">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Portfolio</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="into">
+          <div class="draggable into-name">
+            <h2 class="zUp">HI, I`m</h2>
+            <div class="flex zUp">
+              <h1 id="name"></h1>
+              <h1 id="role"></h1>
+              <h1 id="specialty"></h1>
+              <span class="blink">|</span>
+            </div>
+            <div class="techStack flex">
+              <p>Tech Stack |</p>
+              <div class="slider-container">
+                <div class="slider">
+                  <div class="slide">
+                    <img src="/public/html-5.png" alt="Slide 1" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/css-3.png" alt="Slide 2" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/js.png" alt="Slide 3" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/typescript.png" alt="Slide 4" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/react.png" alt="Slide 5" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/bootstrap.png" alt="Slide 6" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/tailwindcss.png" alt="Slide 7" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/sass.png" alt="Slide 8" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/php.png" alt="Slide 9" />
+                  </div>
+                  <div class="slide">
+                    <img src="/public/wordpress.png" alt="Slide 10" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="draggable into-img">
+            <div class="bg-into-img"></div>
+            <div class="into-avatar"></div>
+          </div>
         </div>
+        <div class="scribble">
+          <img
+            src="/public/abstract-christmas-tree.png"
+            alt="abstract-christmas-tree"
+            class="header-tree-1 draggable"
+          />
+          <img
+            src="/public/abstract-christmas-tree.png"
+            alt="abstract-christmas-tree"
+            class="header-tree-2 draggable"
+          />
+          <img
+            src="/public/up-right-arrow.png"
+            alt="up-right-arrow"
+            class="header-arrow-1 draggable"
+          />
+          <img
+            src="/public/up-right-arrow.png"
+            alt="up-right-arrow"
+            class="header-arrow-2 draggable"
+          />
+          <img
+            src="/public/scribble.png"
+            alt="scribble"
+            class="header-scribble-1 draggable"
+          />
+          <img
+            src="/public/scribble.png"
+            alt="scribble"
+            class="header-scribble-2 draggable"
+          />
+        </div>
+      </div>
     </header>
-    <canvas id="myCanvas"></canvas>
+    <main></main>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="module" src="/main.js"></script>
+    <script src="/assets/js/Draggable.js"></script>
+    <script src="/assets/js/Drawing.js"></script>
+    <script src="/assets/js/Typing.js"></script>
+    <script src="/assets/js/techSlider.js"></script>
   </body>
 </html>

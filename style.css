@@ -1,22 +1,64 @@
-body{
+body {
   margin: 0;
   padding: 0;
   background-image: url("./public/bg.jpg");
+  background-position: -60px -40px;
   overflow-x: hidden;
 }
 
-#myCanvas{
-  position: absolute;
-  z-index: -1;
+header {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(15, 0, 100, 0.479);
+  height: 100%;
+  padding-bottom: 500px;
 }
- 
-#name{
+
+#myCanvas {
+  position: absolute;
+  z-index: 2;
+}
+
+.zUp {
+  position: relative;
+  z-index: 10;
+}
+
+.container {
+  max-width: 1320px !important;
+  margin: 0 auto;
+}
+
+.into-name {
+  animation: 1.5s linear 0s infinite alternate into-name-rise;
+  left: 10px;
+  padding-top: 20rem;
+}
+
+@keyframes into-name-rise {
+  from {
+    transform: translateY(3vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  font-size: 25px !important;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
   color: orange;
-  font-size: 60px;
+  font-size: 60px !important;
+  font-family: "Montserrat", sans-serif;
 }
 
 .blink {
   display: inline-block;
+  font-size: 60px;
+  color: chocolate;
   animation: blink-animation 1s infinite;
 }
 
@@ -30,4 +72,118 @@ body{
   100% {
     opacity: 0;
   }
+}
+
+nav {
+  justify-content: space-between;
+  padding-top: 20px;
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+  position: fixed;
+  z-index: 1000;
+  width: 1320px;
+}
+
+nav > ul > li {
+  margin: 0 20px;
+  transition: 0.5s ease-in-out;
+}
+
+nav > ul > li:hover {
+  color: orange;
+}
+
+.into {
+  display: flex;
+  justify-content: space-between;
+}
+
+.techStack p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  margin: auto 0;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  margin-left: 50px;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 20%;
+  padding: 5px;
+}
+
+.slide img {
+  max-width: 50px;
+  height: auto;
+}
+
+.bg-into-img {
+  position: absolute;
+  width: 400px;
+  height: 500px;
+  border: 5px solid black;
+  border-radius: 100px;
+  rotate: 10deg;
+  margin-top: 14rem;
+  right: 5rem;
+}
+
+.into-avatar {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  border: 5px solid black;
+  border-radius: 100px;
+  margin-top: 18rem;
+  right: 5rem;
+}
+
+.scribble > img {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.header-tree-1 {
+  left: 1060px;
+  top: 390px;
+}
+
+.header-tree-2 {
+  left: 1685px;
+  top: 150px;
+}
+
+.header-arrow-1 {
+  left: 213px;
+  top: 251px;
+  rotate: 80deg;
+}
+
+.header-arrow-2 {
+  left: 213px;
+  top: 600px;
+  rotate: -80deg;
+  transform: scale(1, -1);
+}
+
+.header-scribble-1 {
+  left: 1178px;
+  top: 128px;
+  rotate: 18deg;
+}
+
+.header-scribble-2 {
+  left: 1692px;
+  top: 830px;
+  rotate: -183deg;
 }
