@@ -2,127 +2,98 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Poppins:wght@900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        perspective: 800px;
+        perspective-origin: 50% 50%;
+        position: relative;
+      }
+
+      #game-container {
+        position: absolute;
+        width: 1000vw;
+        height: 1000vh;
+        overflow: hidden;
+      }
+
+      #ground {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: url("./Deciduous_Turf_Texture.jpg") repeat;
+        transform-origin: 50% 50%;
+      }
+
+      #player {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        transform: translateZ(10px);
+      }
+
+      #tower {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: rgb(132, 0, 255);
+        transform: translateX(40px) translateY(40px) translateZ(10px);
+      }
+    </style>
   </head>
   <body>
-    <header id="header">
-      <!--<canvas id="myCanvas"></canvas>-->
-      <div class="container">
-        <nav class="flex">
-          <div class="logo zUp">SADev</div>
-          <ul class="flex zUp">
-            <li><a href="#name">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Portfolio</a></li>
-            <li><a href="">Contact</a></li>
-          </ul>
-        </nav>
-        <div class="into">
-          <div class="draggable into-name">
-            <h2 class="zUp">HI, I`m</h2>
-            <div class="flex zUp">
-              <h1 id="name"></h1>
-              <h1 id="role"></h1>
-              <h1 id="specialty"></h1>
-              <span class="blink">|</span>
-            </div>
-            <div class="techStack flex">
-              <p>Tech Stack |</p>
-              <div class="slider-container">
-                <div class="slider">
-                  <div class="slide">
-                    <img src="/public/html-5.png" alt="Slide 1" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/css-3.png" alt="Slide 2" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/js.png" alt="Slide 3" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/typescript.png" alt="Slide 4" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/react.png" alt="Slide 5" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/bootstrap.png" alt="Slide 6" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/tailwindcss.png" alt="Slide 7" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/sass.png" alt="Slide 8" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/php.png" alt="Slide 9" />
-                  </div>
-                  <div class="slide">
-                    <img src="/public/wordpress.png" alt="Slide 10" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="draggable into-img">
-            <div class="bg-into-img"></div>
-            <div class="into-avatar"></div>
-          </div>
-        </div>
-        <div class="scribble">
-          <img
-            src="/public/abstract-christmas-tree.png"
-            alt="abstract-christmas-tree"
-            class="header-tree-1 draggable"
-          />
-          <img
-            src="/public/abstract-christmas-tree.png"
-            alt="abstract-christmas-tree"
-            class="header-tree-2 draggable"
-          />
-          <img
-            src="/public/up-right-arrow.png"
-            alt="up-right-arrow"
-            class="header-arrow-1 draggable"
-          />
-          <img
-            src="/public/up-right-arrow.png"
-            alt="up-right-arrow"
-            class="header-arrow-2 draggable"
-          />
-          <img
-            src="/public/scribble.png"
-            alt="scribble"
-            class="header-scribble-1 draggable"
-          />
-          <img
-            src="/public/scribble.png"
-            alt="scribble"
-            class="header-scribble-2 draggable"
-          />
-        </div>
+    <div id="game-container">
+      <div id="game-object">
+        <div id="ground"></div>
+        <div id="tower"></div>
       </div>
-    </header>
-    <main></main>
+      <div id="game-entity"><div id="player"></div></div>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="module" src="/main.js"></script>
-    <script src="/assets/js/Draggable.js"></script>
-    <script src="/assets/js/Drawing.js"></script>
-    <script src="/assets/js/Typing.js"></script>
-    <script src="/assets/js/techSlider.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const gameContainer = document.getElementById("game-container");
+        const player = document.getElementById("player");
+
+        let cameraX = 500;
+        let cameraY = 500;
+
+        document.addEventListener("keydown", function (event) {
+          switch (event.key) {
+            case "w":
+              cameraY -= 10;
+              break;
+            case "a":
+              cameraX -= 10;
+              break;
+            case "s":
+              cameraY += 10;
+              break;
+            case "d":
+              cameraX += 10;
+              break;
+          }
+
+          updateCameraPosition();
+          updatePlayerPosition();
+        });
+
+        function updateCameraPosition() {
+          gameContainer.style.transform = `perspective(1000vh) rotateX(20deg) translateX(${-cameraX}px) translateY(${-cameraY}px) translateZ(100vh)`;
+        }
+
+        function updatePlayerPosition() {
+          const centerX = window.innerWidth / 2;
+          const centerY = window.innerHeight / 2;
+          player.style.transform = `translateX(${centerX}px) translateY(${centerY}px) translateZ(10px) translateX(${cameraX}px) translateY(${cameraY}px)`;
+        }
+
+        updateCameraPosition();
+        updatePlayerPosition();
+      });
+    </script>
   </body>
 </html>
