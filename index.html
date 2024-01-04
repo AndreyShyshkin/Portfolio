@@ -1,99 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        perspective: 800px;
-        perspective-origin: 50% 50%;
-        position: relative;
-      }
-
-      #game-container {
-        position: absolute;
-        width: 1000vw;
-        height: 1000vh;
-        overflow: hidden;
-      }
-
-      #ground {
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        background: url("./Deciduous_Turf_Texture.jpg") repeat;
-        transform-origin: 50% 50%;
-      }
-
-      #player {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: red;
-        transform: translateZ(10px);
-      }
-
-      #tower {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: rgb(132, 0, 255);
-        transform: translateX(40px) translateY(40px) translateZ(10px);
-      }
-    </style>
+    <title>Portfolio</title>
   </head>
   <body>
-    <div id="game-container">
-      <div id="game-object">
-        <div id="ground"></div>
-        <div id="tower"></div>
-      </div>
-      <div id="game-entity"><div id="player"></div></div>
-    </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const gameContainer = document.getElementById("game-container");
-        const player = document.getElementById("player");
-
-        let cameraX = 500;
-        let cameraY = 500;
-
-        document.addEventListener("keydown", function (event) {
-          switch (event.key) {
-            case "w":
-              cameraY -= 10;
-              break;
-            case "a":
-              cameraX -= 10;
-              break;
-            case "s":
-              cameraY += 10;
-              break;
-            case "d":
-              cameraX += 10;
-              break;
-          }
-
-          updateCameraPosition();
-          updatePlayerPosition();
-        });
-
-        function updateCameraPosition() {
-          gameContainer.style.transform = `perspective(1000vh) rotateX(20deg) translateX(${-cameraX}px) translateY(${-cameraY}px) translateZ(100vh)`;
-        }
-
-        function updatePlayerPosition() {
-          const centerX = window.innerWidth / 2;
-          const centerY = window.innerHeight / 2;
-          player.style.transform = `translateX(${centerX}px) translateY(${centerY}px) translateZ(10px) translateX(${cameraX}px) translateY(${cameraY}px)`;
-        }
-
-        updateCameraPosition();
-        updatePlayerPosition();
-      });
-    </script>
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
